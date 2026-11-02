@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta Módulos de Seguridad Ocupacional - ATP</title>
+    <title>Seguridad Ocupacional Aplicada a la Formación Técnica | Propuesta ATP</title>
     <style>
         :root {
             --primary: #0f172a;
@@ -98,9 +98,10 @@
         }
 
         .metric-value {
-            font-size: 1.8rem;
+            font-size: clamp(1.25rem, 4vw, 1.8rem);
             font-weight: bold;
-            color: var(--accent);
+            color: #92400e;
+            overflow-wrap: anywhere;
         }
 
         .metric-label {
@@ -146,15 +147,31 @@
             background: #f1f5f9;
         }
 
-        .module-content {
+        .module-header {
+            list-style: none;
+        }
+
+        .module-header::-webkit-details-marker {
             display: none;
+        }
+
+        .module-header:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: -3px;
+        }
+
+        .module-header [aria-hidden="true"] {
+            transition: transform 0.2s ease;
+        }
+
+        .module-card[open] .module-header [aria-hidden="true"] {
+            transform: rotate(180deg);
+        }
+
+        .module-content {
             padding: 1.2rem;
             border-top: 1px solid var(--border-color);
             background: #fafafa;
-        }
-
-        .module-content.active {
-            display: block;
         }
 
         .badge-practical {
@@ -196,6 +213,38 @@
             text-decoration: underline;
         }
 
+        /* Mejoras de accesibilidad y adaptación responsive */
+        .module-header {
+            gap: 1rem;
+            overflow-wrap: anywhere;
+        }
+
+        .module-header span:first-child {
+            min-width: 0;
+        }
+
+        .module-header [aria-hidden="true"] {
+            flex-shrink: 0;
+        }
+
+        .badge-practical {
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        .author-info,
+        .metric-card,
+        .module-content {
+            overflow-wrap: anywhere;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .module-card,
+            .module-header [aria-hidden="true"] {
+                transition: none;
+            }
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 1.4rem; }
             .metrics-grid { grid-template-columns: 1fr; }
@@ -206,134 +255,123 @@
 
     <header>
         <div class="container">
-            <h1>Programa de Seguridad Ocupacional</h1>
-            <div class="subtitle">Especializado en Talleres Técnicos de Electricidad, Electromecánica y Automatización</div>
-            <div class="badge-exclusive">Materia de mi autoría exclusiva para ATP</div>
+            <h1>Seguridad Ocupacional Aplicada a la Formación Técnica</h1>
+            <div class="subtitle">Integración de competencias preventivas en las especialidades técnicas de ATP</div>
+            <div class="badge-exclusive">Propuesta preliminar para valoración institucional</div>
         </div>
     </header>
 
-    <div class="container">
+    <main class="container">
         
         <div class="author-info">
             <p><strong>Facilitador:</strong> Sergio Herrera Rivera</p>
-            <p><strong>Dirigido a:</strong> Estudiantes e instructores de áreas técnicas e industriales (ATP)</p>
-            <p><strong>Objetivo:</strong> Reemplazar la teoría abstracta por la formación técnica aplicada y práctica en taller.</p>
+            <p><strong>Dirigido a:</strong> Estudiantes e instructores de las especialidades técnicas de ATP, según el diagnóstico institucional.</p>
+            <p><strong>Objetivo:</strong> Integrar conocimientos normativos y competencias de prevención de riesgos en la formación técnica, mediante actividades aplicadas, demostraciones y prácticas seguras.</p>
         </div>
 
         <div class="metrics-grid">
             <div class="metric-card">
-                <div class="metric-value">80%</div>
-                <div class="metric-label">Prácticas de Campo e Inspección</div>
+                <div class="metric-value">Aplicación</div>
+                <div class="metric-label">Aprendizaje contextualizado en talleres y equipos técnicos</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">20%</div>
-                <div class="metric-label">Fundamentos Técnicos y Normativa</div>
+                <div class="metric-value">Prevención</div>
+                <div class="metric-label">Criterios técnicos, normativa pertinente y decisiones seguras</div>
             </div>
         </div>
 
-        <h2 class="section-title">Estructura General de Módulos</h2>
+        <h2 class="section-title">Componentes de la Propuesta</h2>
+        <p><strong>Formación aplicada:</strong> Incorporación de contenidos preventivos a las especialidades técnicas existentes, sin constituir una carrera o curso independiente de Salud Ocupacional.</p>
+        <p><strong>Supervisión preventiva:</strong> Evaluación propuesta de condiciones de seguridad en talleres y laboratorios, identificación de peligros y recomendaciones de mejora. Su alcance y responsabilidades quedan sujetos a acuerdo con la dirección.</p>
+        <p>La duración, secuencia, recursos y adaptación a cada especialidad se definirán después del diagnóstico institucional.</p>
+
+        <h2 class="section-title">Unidades Temáticas Propuestas</h2>
 
         <div class="modules-container">
             
-            <div class="module-card">
-                <div class="module-header" onclick="toggleModule(this)">
+            <details class="module-card" open>
+                <summary class="module-header">
                     <span>Módulo 1: Fundamentos y Cultura de Prevención en Taller</span>
-                    <span>▼</span>
-                </div>
+                    <span aria-hidden="true">▼</span>
+                </summary>
                 <div class="module-content">
-                    <p>Enfoque de diagnóstico inicial y desarrollo de la mirada crítica del técnico ante condiciones inseguras.</p>
+                    <p><strong>Resultado de aprendizaje:</strong> Identificar peligros, valorar riesgos y proponer medidas preventivas ante situaciones habituales de los talleres técnicos.</p>
                     <ul>
-                        <li>Marco legal básico y responsabilidades en talleres (Costa Rica).</li>
-                        <li>Identificación de Peligros y Evaluación de Riesgos (IPER).</li>
-                        <li>Cultura de reporte de "Casi Accidentes" (Near Misses).</li>
+                        <li>Responsabilidades preventivas y normativa costarricense pertinente, según la actividad y el entorno.</li>
+                        <li>Identificación de peligros, valoración de riesgos y jerarquía de controles: eliminación, sustitución, controles de ingeniería, administrativos y EPP.</li>
+                        <li>Orden, limpieza, señalización, comunicación de condiciones inseguras e incidentes sin lesión.</li>
+                        <li>Selección básica de EPP según el riesgo, sus limitaciones y las instrucciones del fabricante.</li>
                     </ul>
-                    <div class="badge-practical">Práctica Taller: Cacería de peligros en el taller real de la escuela.</div>
+                    <div class="badge-practical">Práctica guiada: inspección visual de una zona previamente autorizada o escenario simulado, registro de peligros y propuesta de controles; sin intervenir equipos.</div>
                 </div>
-            </div>
+            </details>
 
-            <div class="module-card">
-                <div class="module-header" onclick="toggleModule(this)">
-                    <span>Módulo 2: Seguridad Eléctrica Avanzada y LOTO</span>
-                    <span>▼</span>
-                </div>
+            <details class="module-card">
+                <summary class="module-header">
+                    <span>Módulo 2: Seguridad Eléctrica y Control de Energías Peligrosas</span>
+                    <span aria-hidden="true">▼</span>
+                </summary>
                 <div class="module-content">
-                    <p>Dominio de riesgos eléctricos, fisiología del choque y aislamiento seguro de fuentes de energía.</p>
+                    <p><strong>Resultado de aprendizaje:</strong> Reconocer riesgos eléctricos, interpretar criterios de selección de instrumentos y protección, y explicar el control de energías peligrosas antes de una intervención.</p>
                     <ul>
-                        <li>Fisiología del choque eléctrico y efectos energéticos en el cuerpo humano.</li>
-                        <li><strong>Las 5 Reglas de Oro</strong> para trabajos sin tensión.</li>
-                        <li>Bloqueo y Etiquetado (<strong>LOTO</strong> - Lockout/Tagout).</li>
-                        <li>EPP dieléctrico, herramientas aisladas (Categorías CAT) y caretas contra arco eléctrico.</li>
+                        <li>Choque eléctrico, quemaduras y arco eléctrico: peligros diferenciados y medidas preventivas.</li>
+                        <li>Principios de trabajo sin tensión: desconexión, prevención de reconexión, verificación de ausencia de tensión y demás medidas aplicables por personal competente.</li>
+                        <li>LOTO: identificación de todas las fuentes, aislamiento, bloqueo y etiquetado, control de energía almacenada y verificación de aislamiento; según procedimiento autorizado.</li>
+                        <li>Categorías de medición CAT II, CAT III y CAT IV para instrumentos y accesorios, según entorno, tensión nominal y especificaciones del fabricante; diferenciarlas de las herramientas aisladas.</li>
+                        <li>Selección y limitaciones de EPP eléctrico y protección frente al arco, según evaluación de riesgos; el EPP no sustituye la desenergización ni los controles colectivos.</li>
                     </ul>
-                    <div class="badge-practical">Práctica Taller: Ejercicio real de consignación y colocación de candados LOTO.</div>
+                    <div class="badge-practical">Práctica guiada: identificar fuentes de energía y simular una secuencia LOTO con candados y etiquetas en un entrenador didáctico desenergizado; sin maniobras sobre instalaciones energizadas.</div>
                 </div>
-            </div>
+            </details>
 
-            <div class="module-card">
-                <div class="module-header" onclick="toggleModule(this)">
-                    <span>Módulo 3: Seguridad en Mecánica, Motores y Automatización</span>
-                    <span>▼</span>
-                </div>
+            <details class="module-card">
+                <summary class="module-header">
+                    <span>Módulo 3: Seguridad Mecánica, Motores, Bombeo y Automatización</span>
+                    <span aria-hidden="true">▼</span>
+                </summary>
                 <div class="module-content">
-                    <p>Prevención de accidentes severos en la manipulación de maquinaria rotativa y circuitos automatizados.</p>
+                    <p><strong>Resultado de aprendizaje:</strong> Identificar peligros de maquinaria, bombeo y sistemas automatizados, y justificar controles antes de tareas de operación o mantenimiento.</p>
                     <ul>
-                        <li>Riesgos mecánicos: Atrapamientos, cizallamiento y proyección de partículas.</li>
-                        <li>Uso de guardas de seguridad y paros de emergencia en esmeriles, tornos y taladros.</li>
-                        <li>Riesgos por presión acumulada en neumática/hidráulica y capacitores en variadores/PLC.</li>
-                        <li>Ergonomía e izaje de cargas pesadas (motores y componentes).</li>
+                        <li>Atrapamiento, corte, cizallamiento, proyección de partículas y contacto con partes móviles.</li>
+                        <li>Resguardos, interbloqueos y dispositivos de parada de emergencia: finalidad, inspección visual y limitaciones; un paro de emergencia no equivale a aislamiento de energía.</li>
+                        <li>Arranque inesperado de motores, bombas y sistemas automáticos; identificación de fuentes eléctricas, mecánicas, neumáticas e hidráulicas.</li>
+                        <li>Energía residual o almacenada: presión, resortes, cargas suspendidas, inercia y capacitores de variadores; reconocimiento y verificación del control por personal autorizado.</li>
+                        <li>Manipulación de cargas, ayudas mecánicas y prevención de lesiones musculoesqueléticas.</li>
                     </ul>
-                    <div class="badge-practical">Práctica Taller: Purga de energías residuales e inspección técnica de guardas.</div>
+                    <div class="badge-practical">Práctica guiada: evaluación visual de resguardos y análisis de energías residuales mediante diagramas o equipo didáctico seguro; sin purgas, descargas ni retiro de protecciones por estudiantes.</div>
                 </div>
-            </div>
+            </details>
 
-            <div class="module-card">
-                <div class="module-header" onclick="toggleModule(this)">
-                    <span>Módulo 4: Prevención y Respuesta ante Incendios</span>
-                    <span>▼</span>
-                </div>
+            <details class="module-card">
+                <summary class="module-header">
+                    <span>Módulo 4: Prevención de Incendios y Respuesta ante Emergencias</span>
+                    <span aria-hidden="true">▼</span>
+                </summary>
                 <div class="module-content">
-                    <p>Reacción inmediata y oportuna frente a conatos de incendio en instalaciones eléctricas e industriales.</p>
+                    <p><strong>Resultado de aprendizaje:</strong> Reconocer escenarios de incendio, seleccionar medidas preventivas y priorizar la alerta y evacuación segura.</p>
                     <ul>
-                        <li>Clases de fuego (Clase C para equipos energizados, Clase B para combustibles/aceites).</li>
-                        <li>Selección rápida de extintores (uso crítico del CO2 en tableros y electrónica).</li>
-                        <li>Rutas de evacuación y protocolos de salida segura.</li>
+                        <li>Prevención: fuentes de ignición, combustibles, almacenamiento y orden en talleres técnicos.</li>
+                        <li>Clases de fuego: A (combustibles sólidos comunes), B (líquidos inflamables) y C (equipos eléctricos energizados), según la clasificación utilizada en la referencia técnica.</li>
+                        <li>Selección de extintores según clase de fuego, agente extintor, etiquetado, riesgos del entorno y capacitación. El CO₂ puede servir para ciertos fuegos B y C, pero tiene limitaciones y riesgos de asfixia en espacios confinados.</li>
+                        <li>Alarma, comunicación, rutas de evacuación, puntos de reunión y límites de intervención ante un conato.</li>
+                        <li>La utilización de extintores se condiciona a formación, condiciones seguras, procedimientos institucionales y una ruta de escape disponible; nunca debe retrasar la evacuación.</li>
                     </ul>
-                    <div class="badge-practical">Práctica Taller: Dinámica de selección de extintor adecuado según el escenario.</div>
+                    <div class="badge-practical">Práctica guiada: seleccionar extintores a partir de escenarios simulados, reconocer rutas de evacuación y ejecutar un ejercicio de comunicación de emergencia sin fuego real.</div>
                 </div>
-            </div>
+            </details>
 
         </div>
 
-    </div>
+    </main>
 
     <footer>
-        <p>Desarrollado para ATP Academia Técnica | Materia de Autoría Exclusiva</p>
+        <p>Propuesta preliminar para ATP Academia Técnica Profesional — Costa Rica</p>
         <p style="margin-top: 0.4rem;">
             Desarrollador: 
-            <a href="https://seruhio30.github.io/Portfolio-SeruhioCode30-Front-End/" target="_blank">
+            <a href="https://seruhio30.github.io/Portfolio-SeruhioCode30-Front-End/" target="_blank" rel="noopener noreferrer">
                 https://seruhio30.github.io/Portfolio-SeruhioCode30-Front-End/
             </a>
         </p>
     </footer>
-
-    <script>
-        function toggleModule(header) {
-            const content = header.nextElementSibling;
-            const isActive = content.classList.contains('active');
-            
-            // Cerrar todos
-            document.querySelectorAll('.module-content').forEach(c => c.classList.remove('active'));
-            
-            // Abrir el seleccionado si no estaba activo
-            if (!isActive) {
-                content.classList.add('active');
-            }
-        }
-
-        // Abrir el primer módulo por defecto
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstContent = document.querySelector('.module-content');
-            if (firstContent) firstContent.classList.add('active');
-        });
-    </script>
 </body>
 </html>
