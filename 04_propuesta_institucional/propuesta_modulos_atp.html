@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Módulos de Seguridad Ocupacional - ATP</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #f59e0b;
+            --accent-danger: #ef4444;
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .badge-exclusive {
+            display: inline-block;
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #fef08a;
+            border: 1px solid var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .author-info {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .author-info p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .modules-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .module-header {
+            background: #ffffff;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            user-select: none;
+        }
+
+        .module-header:hover {
+            background: #f1f5f9;
+        }
+
+        .module-content {
+            display: none;
+            padding: 1.2rem;
+            border-top: 1px solid var(--border-color);
+            background: #fafafa;
+        }
+
+        .module-content.active {
+            display: block;
+        }
+
+        .badge-practical {
+            background: #dcfce7;
+            color: #166534;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            background: var(--primary);
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.4rem; }
+            .metrics-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Programa de Seguridad Ocupacional</h1>
+            <div class="subtitle">Especializado en Talleres Técnicos de Electricidad, Electromecánica y Automatización</div>
+            <div class="badge-exclusive">Materia de mi autoría exclusiva para ATP</div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="author-info">
+            <p><strong>Facilitador:</strong> Sergio Herrera Rivera</p>
+            <p><strong>Dirigido a:</strong> Estudiantes e instructores de áreas técnicas e industriales (ATP)</p>
+            <p><strong>Objetivo:</strong> Reemplazar la teoría abstracta por la formación técnica aplicada y práctica en taller.</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">80%</div>
+                <div class="metric-label">Prácticas de Campo e Inspección</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">20%</div>
+                <div class="metric-label">Fundamentos Técnicos y Normativa</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Estructura General de Módulos</h2>
+
+        <div class="modules-container">
+            
+            <div class="module-card">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <span>Módulo 1: Fundamentos y Cultura de Prevención en Taller</span>
+                    <span>▼</span>
+                </div>
+                <div class="module-content">
+                    <p>Enfoque de diagnóstico inicial y desarrollo de la mirada crítica del técnico ante condiciones inseguras.</p>
+                    <ul>
+                        <li>Marco legal básico y responsabilidades en talleres (Costa Rica).</li>
+                        <li>Identificación de Peligros y Evaluación de Riesgos (IPER).</li>
+                        <li>Cultura de reporte de "Casi Accidentes" (Near Misses).</li>
+                    </ul>
+                    <div class="badge-practical">Práctica Taller: Cacería de peligros en el taller real de la escuela.</div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <span>Módulo 2: Seguridad Eléctrica Avanzada y LOTO</span>
+                    <span>▼</span>
+                </div>
+                <div class="module-content">
+                    <p>Dominio de riesgos eléctricos, fisiología del choque y aislamiento seguro de fuentes de energía.</p>
+                    <ul>
+                        <li>Fisiología del choque eléctrico y efectos energéticos en el cuerpo humano.</li>
+                        <li><strong>Las 5 Reglas de Oro</strong> para trabajos sin tensión.</li>
+                        <li>Bloqueo y Etiquetado (<strong>LOTO</strong> - Lockout/Tagout).</li>
+                        <li>EPP dieléctrico, herramientas aisladas (Categorías CAT) y caretas contra arco eléctrico.</li>
+                    </ul>
+                    <div class="badge-practical">Práctica Taller: Ejercicio real de consignación y colocación de candados LOTO.</div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <span>Módulo 3: Seguridad en Mecánica, Motores y Automatización</span>
+                    <span>▼</span>
+                </div>
+                <div class="module-content">
+                    <p>Prevención de accidentes severos en la manipulación de maquinaria rotativa y circuitos automatizados.</p>
+                    <ul>
+                        <li>Riesgos mecánicos: Atrapamientos, cizallamiento y proyección de partículas.</li>
+                        <li>Uso de guardas de seguridad y paros de emergencia en esmeriles, tornos y taladros.</li>
+                        <li>Riesgos por presión acumulada en neumática/hidráulica y capacitores en variadores/PLC.</li>
+                        <li>Ergonomía e izaje de cargas pesadas (motores y componentes).</li>
+                    </ul>
+                    <div class="badge-practical">Práctica Taller: Purga de energías residuales e inspección técnica de guardas.</div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <span>Módulo 4: Prevención y Respuesta ante Incendios</span>
+                    <span>▼</span>
+                </div>
+                <div class="module-content">
+                    <p>Reacción inmediata y oportuna frente a conatos de incendio en instalaciones eléctricas e industriales.</p>
+                    <ul>
+                        <li>Clases de fuego (Clase C para equipos energizados, Clase B para combustibles/aceites).</li>
+                        <li>Selección rápida de extintores (uso crítico del CO2 en tableros y electrónica).</li>
+                        <li>Rutas de evacuación y protocolos de salida segura.</li>
+                    </ul>
+                    <div class="badge-practical">Práctica Taller: Dinámica de selección de extintor adecuado según el escenario.</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Desarrollado para ATP Academia Técnica | Materia de Autoría Exclusiva</p>
+        <p style="margin-top: 0.4rem;">
+            Desarrollador: 
+            <a href="https://seruhio30.github.io/Portfolio-SeruhioCode30-Front-End/" target="_blank">
+                https://seruhio30.github.io/Portfolio-SeruhioCode30-Front-End/
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleModule(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Cerrar todos
+            document.querySelectorAll('.module-content').forEach(c => c.classList.remove('active'));
+            
+            // Abrir el seleccionado si no estaba activo
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+
+        // Abrir el primer módulo por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstContent = document.querySelector('.module-content');
+            if (firstContent) firstContent.classList.add('active');
+        });
+    </script>
+</body>
+</html>
