@@ -65,3 +65,47 @@ La propuesta HTML fue revisada estructural y visualmente en
 utilizan elementos HTML nativos accesibles.
 
 Estado: revisión técnica y documental en curso; sin aprobación institucional.
+
+## Clase 01 — Salud Ocupacional Aplicada
+
+Material introductorio para estudiantes de electricidad
+residencial, electricidad industrial y electromecánica.
+
+- Duración: 180 minutos, incluido un receso de 10 minutos.
+- Modalidad: presencial, con demostraciones seguras.
+- Enfoque: identificación de peligros, prevención y
+  toma de decisiones antes de iniciar trabajos técnicos.
+- Cierre: diagnóstico y formativo, sin calificaciones
+  ni consecuencias académicas.
+- Fecha y horario: pendientes de confirmación con ATP.
+
+### Materiales
+
+Directorio: `02_clases/clase_01_seguridad_aplicada/`
+
+- `programa_180_min.md`: distribución y objetivos.
+- `guia_instructor.md`: ocho bloques técnicos.
+- `actividades_practicas.md`: seis actividades.
+- `evaluacion.md`: preguntas, respuestas y aclaración de dudas.
+- `presentacion/clase_01.html`: presentación de 15 diapositivas.
+
+### Límites de seguridad
+
+No se realizarán trabajos energizados, intervenciones
+en maquinaria operativa, ascensos, suspensiones con
+arneses ni procedimientos LOTO sobre equipos reales.
+
+La clase no certifica ni habilita para ejecutar
+trabajos especializados de riesgo.
+
+### Estado
+
+Materiales elaborados y presentación validada visualmente.
+
+Pendientes:
+- Revisión técnica y normativa final.
+- Confirmación institucional de fecha y horario.
+- Revisión final del instructor antes de impartirla.
+
+Las referencias legales y técnicas se mantienen en
+`05_recursos/fuentes_oficiales.md`.
