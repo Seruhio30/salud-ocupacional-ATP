@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>ATP | Salud Ocupacional Aplicada — Clase 01</title>
+  <style>
+    :root {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #edf5fd;
+      background: #0b1728;
+      font-size: clamp(16px, 1.5vw, 23px);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .slide {
+      display: none;
+      min-height: 100dvh;
+      padding: clamp(24px, 5vw, 80px);
+      padding-bottom: 110px;
+      align-content: center;
+      max-width: 1300px;
+      margin: auto;
+    }
+    .slide.active { display: grid; gap: 1.5rem; }
+    .eyebrow {
+      color: #74d8ee;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 { font-size: clamp(2.4rem, 5vw, 4.4rem); }
+    h2 { font-size: clamp(1.8rem, 3.6vw, 3rem); }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2 { line-height: 1.12; }
+    p, li { line-height: 1.45; }
+    .lead { font-size: 1.25rem; color: #d0e3f5; }
+    .accent { color: #74d8ee; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      padding: 1.15rem;
+      border: 1px solid #385570;
+      background: #152a42;
+      border-radius: 16px;
+      display: grid;
+      gap: .6rem;
+    }
+    .card h3 { color: #89dbef; }
+    .card p, .card li { font-size: .92rem; }
+    .warning {
+      padding: 1rem;
+      border-left: 5px solid #f7c66f;
+      background: #352c23;
+      border-radius: 8px;
+    }
+    .question {
+      padding: 1.4rem;
+      border: 2px solid #74d8ee;
+      border-radius: 16px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .steps { display: flex; flex-wrap: wrap; gap: 12px; }
+    .step {
+      flex: 1 1 145px;
+      padding: 1rem;
+      border: 1px solid #385570;
+      border-radius: 12px;
+      background: #152a42;
+      text-align: center;
+      font-weight: 700;
+    }
+    .diagram {
+      background: #edf5fd;
+      border-radius: 16px;
+      padding: 15px;
+      width: min(100%, 530px);
+      margin: auto;
+    }
+    .diagram svg { display: block; width: 100%; height: auto; }
+    .nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #0b1728;
+      border-top: 1px solid #385570;
+      gap: 10px;
+    }
+    .nav button {
+      background: #183954;
+      border: 1px solid #74d8ee;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: .85rem;
+      cursor: pointer;
+    }
+    .nav button:focus-visible { outline: 3px solid #f7c66f; }
+    .nav button:disabled { opacity: .35; cursor: not-allowed; }
+    .counter { font-size: .8rem; color: #c1d3e4; }
+    .progress { position: fixed; top: 0; height: 5px; background: #74d8ee; }
+    .small { font-size: .78rem; color: #c1d3e4; }
+    ul { margin: 0; padding-left: 1.4rem; }
+    @media (max-width: 750px) {
+      .grid, .grid.three { grid-template-columns: 1fr; }
+      .slide { align-content: start; padding-top: 45px; }
+      .slide.active { gap: 1rem; }
+    }
+    @media print {
+      :root { color: #111; background: #fff; font-size: 14pt; }
+      .slide, .slide.active {
+        display: grid !important;
+        min-height: 0;
+        height: 190mm;
+        page-break-after: always;
+        break-after: page;
+        padding: 18mm;
+        color: #111;
+      }
+      .nav, .progress { display: none; }
+      .card, .step, .warning { background: #f4f7fa; color: #111; }
+      .card h3, .eyebrow, .accent { color: #125776; }
+      .lead, .small { color: #333; }
+      .question { border-color: #125776; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <main id="slides">
+
+    <section class="slide active" aria-label="Diapositiva 1">
+      <div class="eyebrow">ATP · Academia Técnica Profesional</div>
+      <h1>Salud Ocupacional<br><span class="accent">Aplicada</span></h1>
+      <p class="lead">Primero identificamos el peligro. Después decidimos cómo trabajar.</p>
+      <div class="steps">
+        <div class="step">Electricidad residencial</div>
+        <div class="step">Electricidad industrial</div>
+        <div class="step">Electromecánica</div>
+      </div>
+      <p class="small">Clase 01 · 180 minutos · Fecha y horario pendientes de confirmación</p>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 2">
+      <div class="eyebrow">Apertura · 3 minutos</div>
+      <h2>Antes de tocar una herramienta...</h2>
+      <div class="question">Llegas a revisar una bomba. Hay humedad, cables cerca y una escalera. El cliente exige rapidez. ¿Qué haces primero?</div>
+      <p class="lead">Comenta tu decisión con el grupo.</p>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 3">
+      <div class="eyebrow">Bloque 1 · Identificación de peligros</div>
+      <h2>Observar antes de actuar</h2>
+      <div class="steps">
+        <div class="step">1. Observar</div>
+        <div class="step">2. Identificar energías</div>
+        <div class="step">3. Evaluar</div>
+        <div class="step">4. Definir controles</div>
+        <div class="step">5. Decidir</div>
+      </div>
+      <div class="warning">Si no se pueden controlar los peligros, no se inicia el trabajo.</div>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 4">
+      <div class="eyebrow">Bloque 2 · Protección personal</div>
+      <h2>El EPP se selecciona por el peligro</h2>
+      <div class="grid">
+        <div class="card"><h3>Cabeza y ojos</h3><p>Inspeccionar casco, suspensión, gafas, marcas y limitaciones.</p></div>
+        <div class="card"><h3>Manos</h3><p>Guantes mecánicos no equivalen a guantes aislantes eléctricos.</p></div>
+        <div class="card"><h3>Vestimenta</h3><p>Evitar prendas sueltas. La ropa común no implica protección contra arco eléctrico.</p></div>
+        <div class="card"><h3>Decisión</h3><p>Un equipo dañado o cuya aptitud no puede comprobarse no debe utilizarse para ese riesgo.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 5">
+      <div class="eyebrow">Actividad · EPP</div>
+      <h2>¿Lo utilizo o lo rechazo?</h2>
+      <div class="grid">
+        <div class="card"><h3>Caso A</h3><p>Casco con una grieta visible.</p></div>
+        <div class="card"><h3>Caso B</h3><p>Guantes de cuero comunes para contacto eléctrico.</p></div>
+        <div class="card"><h3>Caso C</h3><p>Gafas con lente que dificulta la visión.</p></div>
+        <div class="card"><h3>Caso D</h3><p>Guantes supuestamente aislantes sin identificación verificable.</p></div>
+      </div>
+      <p class="lead">Explica tu decisión y el peligro asociado.</p>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 6">
+      <div class="eyebrow">Bloque 3 · Escaleras</div>
+      <h2>Inspección antes de utilizar</h2>
+      <div class="grid">
+        <div class="card"><h3>Estructura</h3><p>Largueros, peldaños, uniones y deformaciones.</p></div>
+        <div class="card"><h3>Estabilidad</h3><p>Zapatas, apoyo firme, entorno y mecanismos.</p></div>
+        <div class="card"><h3>Identificación</h3><p>Capacidad de carga, instrucciones y uso previsto.</p></div>
+        <div class="card"><h3>Rechazo</h3><p>Defecto que compromete la seguridad: retirar de servicio.</p></div>
+      </div>
+      <div class="warning">Demostración sin ascenso.</div>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 7">
+      <div class="eyebrow">Escaleras de apoyo · Referencia 4:1</div>
+      <h2>¿Cómo se posiciona?</h2>
+      <div class="diagram">
+        <svg viewBox="0 0 500 260" role="img" aria-label="Escalera de apoyo con longitud de trabajo de cuatro metros, altura vertical aproximada de 3,87 metros y base separada un metro">
+          <path d="M65 215 H460" stroke="#34475c" stroke-width="5"/>
+          <path d="M385 215 V24" stroke="#34475c" stroke-width="9"/>
+          <path d="M335 215 L385 24" stroke="#b46b25" stroke-width="9"/>
+          <g stroke="#8c501e" stroke-width="5">
+            <path d="M341 190 H354 M348 162 H362 M356 134 H369 M363 106 H377 M370 78 H384 M377 50 H391"/>
+          </g>
+          <path d="M413 24 V215 M407 24 H419 M407 215 H419" stroke="#136a9b" stroke-width="2"/>
+          <path d="M335 235 H385 M335 230 V240 M385 230 V240" stroke="#136a9b" stroke-width="2"/>
+          <g font-size="19" font-family="Arial" fill="#163c5d" font-weight="bold">
+            <text x="423" y="120">3,87 m</text>
+            <text x="346" y="255">1 m</text>
+            <text x="30" y="48">≈ 75,5°</text>
+            <text x="30" y="75" font-size="15">Longitud: 4 m</text>
+          </g>
+        </svg>
+      </div>
+      <p class="lead">La base se separa aproximadamente una cuarta parte de la longitud de trabajo medida a lo largo de la escalera.</p>
+      <p class="small">No aplica a escaleras de tijera. Consultar fabricante y condiciones del entorno.</p>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 8">
+      <div class="eyebrow">Bloque 4 · Arnés</div>
+      <h2>Inspeccionar no es solo mirar</h2>
+      <div class="grid">
+        <div class="card"><h3>Cintas y costuras</h3><p>Cortes, abrasión, daños químicos y costuras deterioradas.</p></div>
+        <div class="card"><h3>Herrajes</h3><p>Anillos, hebillas, corrosión y deformaciones.</p></div>
+        <div class="card"><h3>Identificación</h3><p>Fabricante, modelo, instrucciones e historial del equipo.</p></div>
+        <div class="card"><h3>Ajuste</h3><p>Demostración en el suelo y según instrucciones del fabricante.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 9">
+      <div class="eyebrow">Arnés · Limitaciones</div>
+      <h2>Un arnés solo no detiene una caída</h2>
+      <div class="steps">
+        <div class="step">Arnés</div>
+        <div class="step">Conexiones compatibles</div>
+        <div class="step">Sistema apropiado</div>
+        <div class="step">Anclaje adecuado</div>
+        <div class="step">Plan de rescate</div>
+      </div>
+      <div class="warning">Considerar distancia libre de caída, efecto péndulo y rescate oportuno. Sin suspensión en clase.</div>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 10">
+      <div class="eyebrow">Bloque 5 · Delimitación</div>
+      <h2>Protegemos también a terceros</h2>
+      <div class="grid">
+        <div class="card"><h3>Conos</h3><p>Orientan y advierten sobre la zona.</p></div>
+        <div class="card"><h3>Cintas</h3><p>Marcan límites, pero no detienen físicamente el paso.</p></div>
+        <div class="card"><h3>Señales</h3><p>Deben comunicar el peligro y las restricciones.</p></div>
+        <div class="card"><h3>Accesos</h3><p>Mantener rutas de evacuación y circulación seguras.</p></div>
+      </div>
+      <p class="lead">Actividad: delimitar una bomba de mantenimiento simulada.</p>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 11">
+      <div class="eyebrow">Bloque 6 · Seguridad eléctrica</div>
+      <h2>Apagado no significa seguro</h2>
+      <div class="grid three">
+        <div class="card"><h3>Choque eléctrico</h3><p>Contacto y paso de corriente por el cuerpo.</p></div>
+        <div class="card"><h3>Arco eléctrico</h3><p>Calor, presión, proyecciones y lesiones graves.</p></div>
+        <div class="card"><h3>Energía almacenada</h3><p>Presión, capacitores, resortes y gravedad.</p></div>
+      </div>
+      <div class="question">¿Presionar STOP elimina todas las energías peligrosas?</div>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 12">
+      <div class="eyebrow">LOTO · Fundamentos</div>
+      <h2>Control de energías peligrosas</h2>
+      <div class="steps">
+        <div class="step">1. Preparar</div>
+        <div class="step">2. Notificar</div>
+        <div class="step">3. Detener</div>
+        <div class="step">4. Aislar</div>
+        <div class="step">5. Bloquear / etiquetar</div>
+        <div class="step">6. Controlar energía almacenada</div>
+        <div class="step">7. Verificar</div>
+      </div>
+      <div class="warning">Simulación exclusivamente inerte. La verificación real corresponde a personal competente y autorizado.</div>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 13">
+      <div class="eyebrow">LOTO · Caso</div>
+      <h2>La bomba está detenida...</h2>
+      <div class="question">Tiene un candado colocado, pero aún conserva presión hidráulica. ¿Se puede intervenir?</div>
+      <p class="lead">Identifica qué energía falta controlar y por qué es necesaria la verificación.</p>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 14">
+      <div class="eyebrow">Bloque 7 · Costa Rica</div>
+      <h2>La prevención también es una responsabilidad legal</h2>
+      <div class="grid">
+        <div class="card"><h3>Constitución · Art. 66</h3><p>Medidas patronales de higiene y seguridad.</p></div>
+        <div class="card"><h3>Código de Trabajo · Art. 282</h3><p>Obligaciones generales de prevención.</p></div>
+        <div class="card"><h3>Código de Trabajo · Art. 284</h3><p>Capacitación, cumplimiento y protección.</p></div>
+        <div class="card"><h3>Arts. 285–286</h3><p>Responsabilidades y prohibiciones del trabajador.</p></div>
+      </div>
+      <p class="small">OSHA se utiliza como referencia técnica internacional; no es automáticamente legislación de Costa Rica. Fuentes y pendientes: 05_recursos/fuentes_oficiales.md.</p>
+    </section>
+
+    <section class="slide" aria-label="Diapositiva 15">
+      <div class="eyebrow">Bloque 8 · Repaso y dudas</div>
+      <h2>¿Qué harías en tu primer día de trabajo?</h2>
+      <div class="grid three">
+        <div class="card">
+          <h3>Reconocer</h3>
+          <p>Identificar peligros antes de comenzar.</p>
+        </div>
+        <div class="card">
+          <h3>Prevenir</h3>
+          <p>Aplicar medidas de control y protección.</p>
+        </div>
+        <div class="card">
+          <h3>Decidir</h3>
+          <p>Detener y reportar condiciones inseguras.</p>
+        </div>
+      </div>
+      <div class="question">
+        Un buen técnico también sabe cuándo NO intervenir.
+      </div>
+      <p class="small">
+        Repaso participativo y aclaración de dudas.
+        Sin calificaciones ni certificación.
+      </p>
+    </section>
+
+  </main>
+  <nav class="nav" aria-label="Navegación de diapositivas">
+    <button id="prev" type="button">Anterior</button>
+    <span class="counter" id="counter" aria-live="polite">1 / 15</span>
+    <button id="next" type="button">Siguiente</button>
+  </nav>
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const previousButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+    const counter = document.getElementById("counter");
+    const progress = document.getElementById("progress");
+    let index = 0;
+
+    function showSlide(nextIndex) {
+      if (nextIndex < 0 || nextIndex >= slides.length) return;
+      slides[index].classList.remove("active");
+      slides[index].setAttribute("aria-hidden", "true");
+      index = nextIndex;
+      slides[index].classList.add("active");
+      slides[index].removeAttribute("aria-hidden");
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      progress.style.width = `${100 * (index + 1) / slides.length}%`;
+      previousButton.disabled = index === 0;
+      nextButton.disabled = index === slides.length - 1;
+      window.scrollTo(0, 0);
+    }
+
+    previousButton.addEventListener("click", () => showSlide(index - 1));
+    nextButton.addEventListener("click", () => showSlide(index + 1));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === "PageDown") {
+        event.preventDefault();
+        showSlide(index + 1);
+      }
+      if (event.key === "ArrowLeft" || event.key === "PageUp") {
+        event.preventDefault();
+        showSlide(index - 1);
+      }
+      if (event.key === "Home") showSlide(0);
+      if (event.key === "End") showSlide(slides.length - 1);
+    });
+
+    slides.forEach((slide, i) => {
+      if (i !== 0) slide.setAttribute("aria-hidden", "true");
+    });
+    showSlide(0);
+  </script>
+</body>
+</html>
